@@ -4,7 +4,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
-
+import matplotlib
+matplotlib.use('Agg')  # GUI olmayan backend kullan
+import matplotlib.pyplot as plt
 # Sayfa başlığı
 st.title('İki Özellikli Binary Classification Veri Görselleştirme')
 
