@@ -76,7 +76,8 @@ plt.figure(figsize=(10, 6))
 sns.scatterplot(data=df, x='X1', y='X2', hue='target', palette='Set1', s=50)
 plt.title('İki Özellikli Veri Dağılımı')
 st.pyplot(plt)
-
+plt.clf()    # Figure'ı temizle
+plt.close()  # Belleği serbest bırak
 # Özellik seçimi için selectbox
 feature = st.selectbox('Özellik Seçin:', ['X1', 'X2'])
 
@@ -113,7 +114,8 @@ else:
 plt.title(f'Threshold ile İki Özellikli Veri Dağılımı')
 plt.legend()
 st.pyplot(plt)
-
+plt.clf()    # Figure'ı temizle
+plt.close()  # Belleği serbest bırak
 # Entropy hesaplama fonksiyonu
 def calculate_entropy(y):
     if len(y) == 0:
@@ -177,7 +179,8 @@ with entropy_graph.container():
         st.write(f"**Seçilen Threshold ({selected_threshold:.2f}) için Ağırlıklı Entropy:** {threshold_entropies[selected_index]:.3f}")
     
     st.pyplot(fig)
-
+    plt.clf()    # Figure'ı temizle
+    plt.close()  # Belleği serbest bırak
 # Entropy'nin genel grafiği
 with st.container():
     st.write('### Entropy Grafiği')
@@ -220,7 +223,8 @@ with st.container():
     ax.set_ylim(0, 1.5)
     
     st.pyplot(fig)
-
+    plt.clf()    # Figure'ı temizle
+    plt.close()  # Belleği serbest bırak
 # Threshold'a göre veriyi bölme
 if feature == 'X1':
     left_mask = df[feature] <= selected_threshold
@@ -396,7 +400,7 @@ st.write(f'**Maksimum Ağaç Derinliği: {max_depth}**')
 st.write('## Decision Tree Ağacı')
 
 # Matplotlib figure oluştur - daha büyük boyut
-fig, ax = plt.subplots(figsize=(60, 50))
+fig, ax = plt.subplots(figsize=(20, 15))
 
 # Ağacı çiz - daha büyük font ve daha iyi görünüm
 plot_tree(dt_model, 
@@ -404,7 +408,7 @@ plot_tree(dt_model,
           class_names=class_names,
           filled=True,
           rounded=True,
-          fontsize=60,  # Font boyutunu artırdım
+          fontsize=12,  # Font boyutunu artırdım
           ax=ax,
           node_ids=True,  # Düğüm ID'lerini göster
           proportion=True)  # Oranları göster
@@ -412,7 +416,8 @@ plot_tree(dt_model,
 # Layout'u düzenle
 plt.tight_layout(pad=2.0)  # Padding artırdım
 st.pyplot(fig, use_container_width=True)  # Container genişliğini kullan
-
+plt.clf()
+plt.close()
 # Model performansı
 from sklearn.metrics import accuracy_score, classification_report
 
@@ -433,7 +438,8 @@ plt.figure(figsize=(10, 6))
 sns.scatterplot(data=df, x='X1', y='X2', hue='target', palette='Set1', s=100, linewidth=0)
 plt.title('İki Özellikli Veri Dağılımı')
 st.pyplot(plt)
-
+plt.clf()    # Figure'ı temizle
+plt.close()  # Belleği serbest bırak
 # Decision boundary plot - renklendirmeli
 st.write('## Decision Boundary Plot (Renklendirmeli)')
 
@@ -464,7 +470,8 @@ ax.set_title('Decision Tree Decision Boundary', fontsize=14, fontweight='bold')
 
 plt.tight_layout()
 st.pyplot(fig, use_container_width=True)
-
+plt.clf()    # Figure'ı temizle
+plt.close()  # Belleği serbest bırak
 
 
 # teorik algoritma nasıl çalışıyor, parameterelr ne işe yarıyor.
